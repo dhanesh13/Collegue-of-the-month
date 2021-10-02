@@ -1,0 +1,120 @@
+<div class="logo">
+    <a class="simple-text">   
+        <img src="assets/img/sd4.png" style="margin-bottom:-25px;margin-top:-35px;"/>  
+    </a>
+</div>
+
+
+<div class="sidebar-wrapper" style="font-family: nimbus-sans;">
+    <div *ngIf="isMobileMenu()">
+        
+        <ul class="nav navbar-nav nav-mobile-menu">        
+            <li class="nav-item">
+                <a class="nav-link" (click)="logOut()" style="cursor: pointer;">
+                    <i class="material-icons">exit_to_app</i>
+                    <p>
+                        <span class="d-lg-none d-md-block">Log Out</span>
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- sidebar for normal user -->
+    <ul class="nav" *ngIf="roleUser == 0">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+
+    <ul class="nav" *ngIf="roleUser == 0 && showVoucher == true">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItemsVoucher" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+
+    <!-- sidebar for manager -->
+
+    <ul class="nav" *ngIf="roleUser == 1">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems2;let i = index" class="{{menuItem.class}} nav-item" (mouseenter)="showsubmenu(i); show===i ? show=-1: show=i">
+            
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+                
+                <i class="material-icons" *ngIf="menuItem.flg[0].SHOW_ICON=='YES'" style="margin-top:-14%;margin-left:88%;">arrow_drop_down</i>           
+            </a>
+
+            <ng-container *ngIf="menuItem.children && menuItem.children.length > 0 && show===i">
+                <ul class="nav">
+                   <li routerLinkActive="active" *ngFor="let childmenu of menuItem.children; let j=index;" class="{{menuItem.class}} nav-item">
+                     <a class="nav-link" [routerLink]="[childmenu.path]">
+                       <i class="material-icons">{{childmenu.icon}}</i>
+                       <p>{{childmenu.title}}</p>
+                      </a>
+                   </li>
+                </ul>
+            </ng-container>
+
+        </li> 
+    </ul>
+
+    <ul class="nav" *ngIf="roleUser == 1 && votenowStatus == true">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItemsVoteNow;let i = index" class="{{menuItem.class}} nav-item" (mouseenter)="showsubmenuVotenow(i); showVotenow===i ? showVotenow=-1: showVotenow=i">
+            
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+
+                <i class="material-icons" *ngIf="menuItem.flg[0].SHOW_ICON=='YES'" style="margin-top:-14%;margin-left:88%;">arrow_drop_down</i>           
+            </a>
+
+            <ng-container *ngIf="menuItem.children && menuItem.children.length > 0 && showVotenow===i">
+                <ul class="nav">
+                   <li routerLinkActive="active" *ngFor="let childmenu of menuItem.children; let j=index;" class="{{menuItem.class}} nav-item">
+                     <a class="nav-link" [routerLink]="[childmenu.path]">
+                       <i class="material-icons">{{childmenu.icon}}</i>
+                       <p>{{childmenu.title}}</p>
+                      </a>
+                   </li>
+                </ul>
+            </ng-container>
+
+        </li>
+    </ul>
+
+    <ul class="nav" *ngIf="roleUser == 1 && showVoucher == true">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItemsVoucher" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+     
+    <!-- sidebar for admin -->
+    <ul class="nav" *ngIf="roleUser == 2">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems3" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>      
+    </ul>   
+
+    <ul class="nav" *ngIf="roleUser == 2 && showVoucher == true">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItemsVoucher" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+
+</div>

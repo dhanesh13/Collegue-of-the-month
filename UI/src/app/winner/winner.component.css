@@ -1,0 +1,86 @@
+table{
+    width:100%;
+}
+
+.mat-tooltip {
+    background-color:#D3D3D3 !important;
+    color:black !important;
+    font-size:small !important;
+  }
+
+  .mat-sort-header{
+    font-size: 15px;
+    color: #870B58;
+    font-weight: bolder;
+  }
+
+  .empPhoto{
+    font-size: 15px;
+    color: #870B58;
+    font-weight: bolder;
+  }
+
+  .declareWinner{
+    font-size: 15px;
+    color: #870B58;
+    font-weight: bolder;
+  }
+
+  .winner{
+    font-size: 15px;
+    color: #870B58;
+    font-weight: bolder;
+  }
+
+  /* .winner .mat-sort-header-container {
+    justify-content: flex-end !important;
+  } */
+
+  /* .dataWinner{
+    text-align: center !important;
+  } */
+
+  .closeIcon{
+    color: #E94E0F;
+    cursor: pointer;
+    /* text-align: center !important; */
+    /* align-content: right !important; */
+  }
+
+  /* for search bar */
+  .hide{
+  display: none;
+}
+
+mat-footer-row mat-footer-cell{
+  justify-content: center !important;
+
+}
+
+.styling{
+  justify-content: center !important;
+  border-bottom-style: none;
+  text-align: center;
+}
+
+.stylingRecords{
+  margin-left: 900px;
+  border-bottom-style: none;
+  font-size:17px;
+  color: #870B58;
+}
+
+.search-form-field{
+  max-width: 300px;
+  margin-left: 900px;
+  box-shadow: 0 0 0 0 #B0C1D9;
+  padding-top: -5px !important;
+}
+
+.center .mat-sort-header-container {
+  justify-content: flex-end !important;
+}
+.dataCenter {
+  text-align: center;
+}
+

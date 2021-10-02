@@ -1,0 +1,76 @@
+<div class="main-content" style="font-family: nimbus-sans;">
+    <div class="container-fluid">
+        <div class="row">       
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h6 class="card-category text-danger" style="float: left;">
+                            <i class="material-icons">redeem</i> Voucher {{ nominationPeriod | date:"MMMM yyyy"}}
+                        </h6>
+
+                        <br/><br/>
+
+                        <h6 style="color: #870B58;font-size:120%;">Congratulations!! You have been entitled to a voucher value of Rs 1000/-</h6><br/>
+                        
+                        <h6 style="color: #870B58;font-size:120%;">Kindly indicate your preference from the 6 vouchers below:</h6><br/>
+   
+                        <form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+                          
+                            <div class="form-group row">                    
+                              <label for="nandos" class="col-md-6">
+                                <input type="radio" value="Nandos" formControlName="voucher">
+                                <span class="labelRadio">Nando's</span>
+                                <img src="assets/img/nandos.png"  alt="Nando's" class="image" style="margin-left:12.8%;margin-bottom: 5%;">
+                              </label>
+
+                              <!-- <span class="error-msg" *ngIf="isFormSubmitted && form.controls['voucher'].errors?.required">
+                                Please select any option above!
+                              </span> -->
+                        
+                              <label for="panarottis" class="col-md-6">
+                                <input type="radio" value="Panarottis" formControlName="voucher">
+                                <span class="labelRadio">Panarottis</span>&nbsp;&nbsp;&nbsp;
+                                <img src="assets/img/panarottis.jpg"  alt="Panarottis" class="image" style="margin-left:7.9%;margin-bottom: 5%;">
+                              </label> 
+                              
+                              <label for="spur" class="col-md-6">
+                                <input type="radio" value="Apache Spur" formControlName="voucher">
+                                <span class="labelRadio">Apache Spur</span>
+                                <img src="assets/img/spur.png"  alt="Apache Spur" class="image" style="margin-left:7%;margin-bottom: 5%;">
+                              </label>
+                        
+                              <label for="bookcourt" class="col-md-6">
+                                <input type="radio" value="BookCourt" formControlName="voucher">
+                                <span class="labelRadio">BookCourt</span>&nbsp;&nbsp;&nbsp;
+                                <img src="assets/img/bookcourt.jpg"  alt="BookCourt" class="image" style="margin-left:6.5%;margin-bottom: 5%;">
+                              </label> 
+
+                              <label for="bodysoul" class="col-md-6">
+                                <input type="radio" value="BODY & SOUL" formControlName="voucher">
+                                <span class="labelRadio">Body & Soul</span>&nbsp;&nbsp;&nbsp;
+                                <img src="assets/img/bodyandsoul.jfif"  alt="BODY & SOUL" class="image" style="margin-left:4.2%;margin-bottom: 5%;">
+                              </label>
+                        
+                              <label for="allsport" class="col-md-6">
+                                <input type="radio" value="Allsport" formControlName="voucher">
+                                <span class="labelRadio">Allsport</span>&nbsp;&nbsp;&nbsp;
+                                <img src="assets/img/allsport.jpg"  alt="Allsport" class="image" style="margin-left:10%;margin-bottom: 5%;">
+                              </label>
+                            </div>
+
+                            <div *ngIf="isSubmitted && voucher.invalid" style="margin-bottom:8%;margin-right:1%;margin-top:-5%;">
+                              <p class="error">Please select a voucher!</p>
+                            </div>
+
+                            <div style="justify-content: flex-end;">
+                              <button mat-raised-button class="btn btn-danger" style="background-color: rgb(233, 78, 15);text-transform: capitalize;font-size:100%;width:15%;float:right;">Submit</button>
+                            </div>
+                          
+                          </form>                 
+                    </div>
+                </div>
+            </div>
+        </div>                     
+    </div>
+</div>

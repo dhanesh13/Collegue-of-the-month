@@ -1,0 +1,162 @@
+.flex-parent {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+  margin:10px;
+}
+
+.pointer { 
+  cursor: pointer; 
+  
+}
+
+.pointer:hover{
+  color: #E4003A;
+}
+
+button.margin-right {
+  margin-right: 20px;
+}
+
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.lblError{
+  color:red;
+}
+
+
+.text{
+ font-family: Roboto, sans-serif;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected,  ::ng-deep .mat-step-header .mat-step-icon-state-edit  {
+background-color: rgb(165, 72, 129) !important;   
+}
+
+::ng-deep .mat-step-header .mat-step-icon-state-done {
+background-color: rgb(33, 188, 95) !important;   
+}
+
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color:rgb(127, 133, 148)!important;   /*inner circle color change*/
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color:rgb(127, 133, 148)!important; /*outer ring color change*/
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+  opacity: 0.03 !important;
+  background-color: rgb(127, 133, 148)!important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: rgb(127, 133, 148);
+} 
+
+ .purple-border-focus .form-control:focus {
+  border: 1px solid rgb(165, 72, 129);
+  box-shadow: 0 0 0 0.2rem rgb(231, 210, 223);
+} 
+
+/* for full name and division input fields */
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgb(127, 133, 148)!important;
+ }
+
+/* ::ng-deep.mat-form-field-ripple {
+ 
+ background-color: rgb(148, 155, 170) !important;;
+} */
+
+
+  ::ng-deep.HoverCommitment {
+   max-width: 70px!important; 
+  background-color:rgb(212, 214, 219)!important;
+  color:rgb(116, 0, 72)!important;
+  font-size: 14px!important;
+  text-align: justify!important;
+  text-justify: inter-word!important;
+}  
+
+.tooltip {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  color: blue;
+  border-bottom: 1px dotted;
+  position: relative;
+}
+
+.tooltip-dropdown {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  padding-top: 32px;
+}
+
+.tooltip-dropdown__content {
+  color: white;
+  background-color: black;
+  border-radius: 4px;
+  padding: 8px 12px;
+  width: 300px;
+  text-align: left;
+}
+
+::ng-deep.Hover {
+  min-width: 700px;
+  background-color:rgb(212, 214, 219);
+  color:rgb(116, 0, 72)!important;
+  font-size: 14px;
+  text-align: justify!important;
+  text-justify: inter-word!important;
+}
+
+.ng-autocomplete {
+  width:100%;
+  max-width: 600px;
+  display: table;
+  margin: 0 auto;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 45px;
+  height: 45px;
+  padding: 0 16px;
+  text-align: left;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+span {
+  margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+

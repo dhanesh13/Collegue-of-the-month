@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.purple-snackbar {
+    background: #870B58;
+    color:white;
+    margin: 0 !important;
+    position: absolute;
+    right: 140px;
+    top: 1px;
+    min-width: 250px !important;  
+}
+
+.nav-tabs .nav-item .nav-link.active {
+    background-color: green;
+    /* transition: 0.3s background-color 0.2s; */
+}
+
+p{
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}

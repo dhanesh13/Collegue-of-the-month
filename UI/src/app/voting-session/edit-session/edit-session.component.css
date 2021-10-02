@@ -1,0 +1,12 @@
+.edit-voting-session-button {
+    display: table-cell;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .edit-voting-session-updateButton{
+    background-color:  rgb(233, 78, 15) !important;
+    color: white;
+    width: 50%;
+  }

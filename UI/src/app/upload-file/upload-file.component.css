@@ -1,0 +1,23 @@
+.upload-file-button{
+    background-color: rgb(233, 78, 15) !important;
+    color: white !important;
+  }
+
+  .upload-file-title{
+    margin-bottom: 2%;
+  }
+
+.progress-bar {
+  background-color: #7783A0;
+}
+
+.chooseFile{
+  background-color: #555D71;
+}
+
+.clear-file-button{
+  background-color: #7783A0 !important;
+  color: white;
+  width: 50%;
+  margin-top: 40%;
+}

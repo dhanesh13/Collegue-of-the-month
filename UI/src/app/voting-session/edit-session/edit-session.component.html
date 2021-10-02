@@ -1,0 +1,62 @@
+<h6 mat-dialog-title>Edit Voting Session</h6>
+<form [formGroup]="form" (ngSubmit)="updateVotingSession()" class="currentVotingForm">
+  <div class="form-group">
+    <mat-form-field appearance="fill">
+      <mat-label>Opening Date</mat-label>
+      <input formControlName="openingDate" matInput [min]="minOpeningDate" [max]="maxOpeningDate" [matDatepicker]="pickerOD">
+      <div *ngIf="form.controls.openingDate.invalid && 
+                                            (form.controls.openingDate.dirty || form.controls.openingDate.touched)"
+        class="alert alert-danger">
+
+        <div *ngIf="form.controls.openingDate.errors.required">
+          Opening Date is required.
+        </div>
+      </div>
+      <mat-datepicker-toggle matSuffix [for]="pickerOD"></mat-datepicker-toggle>
+      <mat-datepicker #pickerOD></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Closing Date</mat-label>
+      <input formControlName="closingDate" matInput [min]="minClosingDate" [max]="maxClosingDate" [matDatepicker]="pickerCD">
+      <div *ngIf="form.controls.closingDate.invalid && 
+                                            (form.controls.closingDate.dirty || form.controls.closingDate.touched)"
+        class="alert alert-danger">
+
+        <div *ngIf="form.controls.closingDate.errors.required">
+          Closing Date is required.
+        </div>
+      </div>
+      <mat-datepicker-toggle matSuffix [for]="pickerCD"></mat-datepicker-toggle>
+      <mat-datepicker #pickerCD></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="form-group">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Event</mat-label>
+      <mat-select formControlName="eventEdit">
+        <mat-option *ngFor="let event of events" [value]="event.eventId">
+          {{event.description}}
+        </mat-option>
+      </mat-select>
+      <div *ngIf="form.controls.eventEdit.invalid && 
+                                            (form.controls.eventEdit.dirty || form.controls.eventEdit.touched)"
+        class="alert alert-danger">
+
+        <div *ngIf="form.controls.eventEdit.errors.required">
+          Event is required.
+        </div>
+      </div>
+    </mat-form-field>
+  </div>
+
+  <div class="edit-voting-session-button form-group">                    
+    <button class="edit-voting-session-updateButton" mat-raised-button>Update</button>
+  </div>
+  
+</form>

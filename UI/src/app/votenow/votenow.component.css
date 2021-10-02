@@ -1,0 +1,84 @@
+
+.container {
+  padding: 2rem 0rem;
+}
+
+h4 {
+  margin: 2rem 0rem 1rem;
+}
+
+table {
+
+
+    width: 100%;
+  }
+  
+  .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #870B58 !important;
+}
+
+.mat-tooltip {
+  background-color:#D3D3D3 !important;
+  color:black !important;
+  font-size:small !important;
+}
+
+.mat-sort-header{
+  font-size: 15px;
+  color: #870B58;
+  font-weight: bolder;
+}
+
+.rationale{
+  font-size: 15px;
+  color: #870B58;
+  font-weight: bolder;
+}
+
+/* for search bar */
+.hide{
+  display: none;
+}
+
+mat-footer-row mat-footer-cell{
+justify-content: center !important;
+
+}
+
+.styling{
+justify-content: center !important;
+border-bottom-style: none;
+text-align: center;
+}
+
+.stylingRecords{
+margin-left: 900px;
+border-bottom-style: none;
+font-size:17px;
+color: #870B58;
+}
+
+.search-form-field{
+max-width: 300px;
+margin-left: 900px;
+box-shadow: 0 0 0 0 #B0C1D9;
+padding-top: -5px !important;
+}
+
+
+.mat-checkbox-layout .mat-checkbox-label {
+  /* line-height: 24px; */
+  font-size: 15px;
+  color: #870B58;
+  font-weight: bolder;
+}
+
+.buttonVote{
+  background-color:rgb(233, 78, 15);
+  color: white;
+  margin-left:25px;
+}
+
+.mat-checkbox-checked .mat-checkbox-background{
+  background-color: rgb(127, 133, 148)!important;
+}

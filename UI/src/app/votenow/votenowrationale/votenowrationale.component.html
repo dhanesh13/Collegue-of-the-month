@@ -1,0 +1,89 @@
+
+
+<div class="modal-body">   
+    <mat-icon class="closeIcon" (click)="activeModal.dismiss('Cross click')" title="Close">close</mat-icon>
+  
+    <ul ngbNav #nav="ngbNav" class="nav-tabs">
+      <li [ngbNavItem]="1" style="margin-left: 5%; margin-right: 2%;" class="impact">
+        <a ngbNavLink style="background-color: #870B58;  font-family: nimbus-sans;text-align:center;"> Impact </a>
+        <ng-template ngbNavContent>
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th style="font-family: nimbus-sans;color: #870B58;"> <b>Voted By</b> </th>
+                <th style="font-family: nimbus-sans;color: #870B58;"> <b>Impact</b> </th>                                  
+              </thead>
+              <tbody >
+                <tr *ngFor="let d of nominations$">  
+                  <td>{{d.VotersFullName}}</td>  
+                  <td>{{d.Impact}}</td>  
+                </tr>                            
+              </tbody>
+            </table>    
+          </div>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="2" style="background-color: #870B58;margin-right: 2%;" class="spark">
+        <a ngbNavLink style="font-family: nimbus-sans;text-align:center;" >Be A Spark</a>
+        <ng-template ngbNavContent>
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th style="font-family: nimbus-sans; color: #870B58;"> <b>Voted By</b> </th>
+                <th style="font-family: nimbus-sans; color: #870B58;"> <b>Be A Spark</b> </th>
+                <th> </th>                       
+              </thead>
+              <tbody>
+                <tr *ngFor="let d of nominations$">  
+                  <td>{{d.VotersFullName}}</td>  
+                  <td>{{d.BeASpark}}</td>  
+                </tr>                            
+              </tbody>
+            </table>          
+          </div>
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="3" style=" background-color: #870B58;" class="rationale">
+        <a ngbNavLink style="font-family: nimbus-sans; color: #870B58;text-align:center;">Rationale</a>
+        <ng-template ngbNavContent>
+          <nav ngbNav #nav="ngbNav" class="nav-tabs">
+            <ng-container ngbNavItem>
+              <a ngbNavLink>Manager Rationale</a>
+              <ng-template ngbNavContent>
+                <ul *ngFor="let d of nominations$ ;let i = index ; first as isFirst;" >
+                  <li *ngIf="isFirst">             
+                    <span > {{d.ManagersRationale}}</span> 
+                  </li>
+                </ul> 
+              </ng-template>
+            </ng-container>
+            <ng-container ngbNavItem>
+              <a ngbNavLink>Admin Rationale</a>
+              <ng-template ngbNavContent>
+                <ul *ngFor="let d of nominations$ ;let i = index ; first as isFirst;" >
+                  <li *ngIf="isFirst">                  
+                    <span > {{d.AdminRationale}}</span>                 
+                  </li>
+                </ul>
+              </ng-template>
+            </ng-container>         
+          </nav>
+          
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        </ng-template>
+      </li>     
+    </ul>
+      
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    <!-- <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div> -->
+  </div>
+  
+  
+     
+  
+   
+        
+  
+       

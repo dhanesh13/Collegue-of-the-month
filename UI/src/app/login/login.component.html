@@ -1,0 +1,70 @@
+<div class="main-content" style="font-family: nimbus-sans;"> 
+    <div class="container-fluid">
+        <div class="row">          
+            <div class="col-md-12">                       
+                <div class="card">
+                    <div class="row ">
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="card-header card-header-danger" style="font-family: calibri;">
+                                <h4 class="card-title" style="font-family: nimbus-sans;">Colleague of the Month </h4>
+                            </div>                         
+                        </div>
+                    </div>              
+                </div>        
+            </div>
+        </div>
+    </div>
+</div> 
+<br/> <br/>
+<div class="main-con">   
+    <main id="main" class="d-flex align-items-center min-vh-100 py-3 py-md-0 " style="margin-top: -152px;margin-bottom: -115px;"> 
+  
+      <div class="container">
+        <div class="card login-card mt-lg-0">
+          <div class="row no-gutters">
+            <div class="col-md-5">
+              <img src="assets/img/loginback.png" alt="login" class="login-card-img"/>
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <div class="brand-wrapper">
+                  <img src="assets/img/Positive.png" alt="logo" class="logo" />
+                </div>
+                <p class="login-card-description">Sign into your account</p>           
+  
+                <form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+                    <div class="form-group">
+                      <input class="form-control" type="text" formControlName="username" placeholder="Username" />                                    
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" type="password" formControlName="password" placeholder="Password" />                  
+                    </div>         
+                    
+                    <button mat-button class="btn btn-block login-btn mb-4" type="submit">Login</button>
+                                                                  
+                </form>               
+                <br/>
+
+                <p class="login-card-footer-text">                  
+                    <a [routerLink]="['/change-password']" class="text-reset">Change Password</a>
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>   
+  
+    <footer class="footer" style="position:fixed;bottom:2px;width:100%;">
+      <div class="container">
+        <div class="copyright pull-center">
+          &copy; HFTP 
+          {{date | date: 'yyyy'}} Inspired by Vish and Sameer
+        </div>
+      </div>
+    </footer>
+
+</div>

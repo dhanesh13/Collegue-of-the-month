@@ -1,0 +1,33 @@
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     
+
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title" style="font-family: nimbus-sans;">Shortlist Rationale</h4>
+        <button type="button" class="close" aria-label="Close" data-dismiss="modal"data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+     
+    <div class="modal-body">
+     
+        
+       
+        <label>
+          <textarea rows="4" cols="60" type="text" placeholder="Enter your rationale" id="managerRationale" class="form-control" [(ngModel)]="managerRationaleForm"></textarea>
+        </label>
+      
+          
+        
+    
+   </div>
+   <div class="modal-footer">
+    <button type="submit" (click)="onSubmit()"class="btn btn-success" style="float: right; text-transform: capitalize;">Submit rationale</button>
+   </div>
+
+</div>
+</div>
+</div>

@@ -1,0 +1,123 @@
+
+html * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+* {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+
+.mat-form-field-type-mat-native-select .mat-form-field-infix::after {
+    color: green!important;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+table{
+    width:100%;
+}
+
+// .mat-header-cell {
+//     //display:flex;
+//     justify-content:center;
+// }
+
+// .mat-header-cell {    text-align: center;    }
+
+// .mat-header-cell.text-center { text-align: center; }
+
+.votingSessionBtn{
+    background-color: #7783A0 !important;
+    font-family: nimbus-sans;
+    font-size: medium;
+    float:right !important;
+    width:15% !important;
+    margin-bottom: 3% !important;
+}
+
+.uploadBtn{
+    background-color: #303642 !important;
+    font-family: nimbus-sans;
+    font-size: medium;
+}
+
+.mat-tooltip {
+    background-color:#D3D3D3 !important;
+    color:black !important;
+    font-size:small !important;
+  }
+
+  .mat-sort-header{
+    font-size: 15px;
+    color: #870B58;
+    font-weight: bolder;
+  }
+
+  .rationale{
+    font-size: 15px;
+    color: #870B58;
+    font-weight: bolder;
+  }
+
+  /* for search bar */
+  .hide{
+      display: none;
+  }
+
+  mat-footer-row mat-footer-cell{
+    justify-content: center !important;
+
+  }
+
+  .styling{
+    justify-content: center !important;
+    border-bottom-style: none;
+    text-align: center;
+  }
+
+  .stylingRecords{
+    margin-left: 900px;
+    border-bottom-style: none;
+    font-size:17px;
+    color: #870B58;
+  }
+
+  .search-form-field{
+    max-width: 300px;
+    margin-left: 900px;
+    box-shadow: 0 0 0 0 #B0C1D9;
+    padding-top: -5px !important;
+  }
+
+  .nomination{
+    text-align:center;
+  }
+
+  .center .mat-sort-header-container {
+    justify-content: flex-end !important;
+  }
+  .dataCenter {
+    text-align: center;
+  }
+
+  .nominationsLast .mat-sort-header-container {
+    justify-content: flex-end !important;
+  }
+
+  .dataNominationsLast {
+    text-align: center;
+  }

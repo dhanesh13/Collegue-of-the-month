@@ -1,0 +1,134 @@
+<div class="main-content" style="font-family: nimbus-sans;">
+  <div class="container-fluid">
+      <div class="row">       
+        <div class="col-md-12">
+            <div class="card">
+
+                  <div class="card-body">
+                    <h6 class="card-category text-danger" style="float: left;">
+                      <i class="material-icons">emoji_events</i> Proclaim Winner {{ nominationPeriod | date:"MMMM yyyy"}}
+                    </h6>
+
+                      <!-- Search -->
+                      <mat-form-field class="search-form-field" floatLabel="never">
+                      <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()" >
+                      <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>                                           
+
+                    <div class="table-responsive">
+                      
+                      <div class="mat-elevation-z8">     
+                        <table mat-table [hidden]="!isTableHasData" [dataSource]="dataSource" matSort>                        
+                          
+                            <!-- Full Name Column -->
+                            <ng-container matColumnDef="query.EmployeeFirstName">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Name </th>
+                              <td mat-cell *matCellDef="let d"> {{d.query.EmployeeFirstName}}  {{d.query.EmployeeLastName}} </td>
+                            </ng-container>
+
+                            <!-- Division Column -->
+                            <ng-container matColumnDef="query.EmployeeDivision">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> Division </th>
+                              <td mat-cell *matCellDef="let d"> {{d.query.EmployeeDivision}} </td>
+                            </ng-container>
+                          
+                            <!-- Department Column -->
+                            <ng-container matColumnDef="query.EmployeeDepartment">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>                                  
+                              <td mat-cell *matCellDef="let d"> {{d.query.EmployeeDepartment}} </td>
+                            </ng-container>
+                          
+                            <!-- Managers Votes -->
+                            <ng-container matColumnDef="managerVotesCount">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="center"> Managers Votes </th>
+                              <td mat-cell *matCellDef="let d" class="dataCenter"> {{d.managerVotesCount}}</td>
+                            </ng-container>
+
+                            <!-- Winner -->
+                            <ng-container matColumnDef="delete">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="center">Winner</th>
+                            <ng-container >
+                            <td mat-cell *matCellDef="let d" class="dataCenter"><i *ngIf = "d.nominations[0].Winner == true" class="fa fa-trophy" style="font-size:48px;color:rgb(135, 11, 88)"></i>
+                            </td>
+                            </ng-container>
+                          </ng-container>
+
+                            <!-- Declare Winner -->
+                            <ng-container matColumnDef="declare">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="center">Declare Winner</th>
+                              <td mat-cell *matCellDef="let d" class="dataCenter"><a *ngIf = "d.nominations[0].Winner == false || d.nominations[0].Winner == null" (click) ="Edit(d)" class="btn btn-outline-warning" type="button" data-toggle="tooltip" data-placement="top" title="Declare as winner">
+                                <i class="fa fa-shield" style="font-size:23px"></i></a></td>
+                            </ng-container>
+                            
+                            <!-- Discard Winner -->
+                            <ng-container matColumnDef="discardWinner">
+                            <th mat-header-cell *matHeaderCellDef  mat-sort-header class="center">Discard</th>
+                            <td mat-cell *matCellDef="let d" class="dataCenter">
+                              <mat-icon class="closeIcon" *ngIf = "d.nominations[0].Winner == true" (click)="delete(d)" data-toggle="tooltip" title="Discard winner">close</mat-icon>
+                            </td>
+                          </ng-container>
+
+                          <!-- loading -->
+                          <ng-container matColumnDef="loading">
+                            <mat-footer-cell *matFooterCellDef class="styling" colspan="4">
+                              Loading data...
+                            </mat-footer-cell>
+                          </ng-container>
+                          
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                            <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSource!=null}" class="styling"></mat-footer-row>
+
+                          </table>
+
+                          <div [hidden]="isTableHasData" class="stylingRecords">
+                            <b>No records found!</b>
+                          </div>
+
+                          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+                        </div>  
+                        </div>
+
+                        <br/>
+                        <div style="justify-content: flex-end;">
+                          <button mat-raised-button class="btn btn-danger" (click)="confirmWinner()" style="background-color: rgb(233, 78, 15);text-transform: capitalize;font-size:100%;float:right;">Confirm Winner</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>                     
+      </div>
+
+</div>
+
+<!-- modal for delete -->
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Are you sure to remove {{eFirstName}} {{eLastName}} from winner? </p>
+    <button type="button" class="btn" style="background-color:#E94E0F!important;color:white;" (click)="confirm()">Ok</button> &nbsp;
+    <button type="button" class="btn btn-default" style="background-color:#7783A0!important;text-transform: capitalize;" (click)="decline()" >Cancel</button>
+  </div>
+</ng-template>
+
+<!-- modal for edit -->
+<ng-template #templateEdit>
+  <div class="modal-body text-center">
+    <p>Do you want to proclaim {{eFirstName}} {{eLastName}} as a winner? </p>
+    <button type="button" class="btn" style="background-color:#E94E0F!important;color:white;" (click)="confirmEdit()">Ok</button> &nbsp;
+    <button type="button" class="btn btn-default" style="background-color:#7783A0!important;text-transform: capitalize;" (click)="declineEdit()" >Cancel</button>
+  </div>
+</ng-template>
+
+<!-- modal for comfirm Winners-->
+<ng-template #templateConfirmWinner>
+  <div class="modal-body text-center">
+    <p>Do you want to confirm winner? Email will be dispatched </p>
+    <button type="button" class="btn" style="background-color:#E94E0F!important;color:white;text-transform: capitalize;" (click)="confirmYes()">Yes</button> &nbsp;
+    <button type="button" class="btn btn-default" style="background-color:#7783A0!important;text-transform: capitalize;" (click)="declineNo()" >No</button>
+  </div>
+</ng-template>

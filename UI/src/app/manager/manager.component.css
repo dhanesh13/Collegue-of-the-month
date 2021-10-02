@@ -1,0 +1,74 @@
+#mymodal .modal-dialog {
+    max-width: 565% !important;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+}
+
+table{
+  width:100%;
+}
+
+.pointer { 
+  cursor: pointer; 
+  color:rgb(255, 123, 0);  
+}
+ 
+.pointer:hover{
+  color: #870B58;
+}
+
+ /* for search bar */
+ .hide{
+  display: none;
+}
+
+mat-footer-row mat-footer-cell{
+justify-content: center !important;
+
+}
+
+.styling{
+justify-content: center !important;
+border-bottom-style: none;
+text-align: center;
+}
+
+.stylingRecords{
+margin-left: 900px;
+border-bottom-style: none;
+font-size:17px;
+color: #870B58;
+}
+
+.search-form-field{
+max-width: 300px;
+margin-left: 900px;
+box-shadow: 0 0 0 0 #B0C1D9;
+padding-top: -5px !important;
+}
+
+.mat-sort-header{
+  font-size: 15px;
+  color: #870B58;
+  font-weight: bolder;
+}
+
+
+.nominations .mat-sort-header-container {
+  justify-content: flex-end !important;
+}
+
+.nominationsData {
+  text-align: center !important;
+}
+
+.center .mat-sort-header-container {
+  justify-content: flex-end !important;
+}
+.dataCenter {
+  text-align: center;
+}
+

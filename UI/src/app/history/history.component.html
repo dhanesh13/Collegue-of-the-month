@@ -1,0 +1,158 @@
+
+       <div class="col-md-12">
+       <div class="main-content" style="font-family: nimbus-sans;">
+            <div class="container-fluid">
+                <div class="row">       
+                  <div class="col-md-12">
+                      <div class="card">
+        
+                            <div class="card-body">
+                                <h6 class="card-category text-danger" style="float: left;">
+                                    <i class="material-icons" style="font-size: x-large;">military_tech</i> Hall of Fame
+                                 </h6>
+                                
+
+
+                                <div class="col-md-12">
+                                    <div class="card border-0">
+                            
+                                          <div class="card-body">
+                                            <h6 class="card-category" style="color: orange;">
+                                                <i class="material-icons">face</i> Colleague of the Month 2021
+                                              </h6>
+                                              <hr>
+                                              <mdb-carousel [isControls]="false" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+                                              [animation]="'slide'">
+                                  <mdb-carousel-item *ngFor="let item of bslide; let i = index">
+                                    <div class="row">
+                                      <div class="col-md-3" [ngClass]="{'d-none d-md-block': cardIndex !== 0}"
+                                           *ngFor="let card of item; let cardIndex = index">
+                                        <mdb-card class="my-1">
+                                          <mdb-card-img src="assets/img/fbd.png"  alt="Employee Photo"></mdb-card-img>
+                                          <mdb-card-body>
+                                            <mdb-card-title>
+                                              <h6 style="text-align: center;">{{card.Period | date:"MMMM"}}</h6>
+                                            </mdb-card-title>
+                                            <p style="text-align: center;">{{card.FirstName}} {{card.LastName}}</p>
+                                            <button style="margin-left: 40%;" (click)="openRationaleModal(card)"   data-toggle="tooltip" data-placement="top" title="View Rationale" mat-icon-button color="primary">
+                                                <mat-icon>launch</mat-icon>
+                                                </button>
+                                          </mdb-card-body>
+                                        </mdb-card>
+                                      </div>
+                                    </div>
+                                  </mdb-carousel-item>
+                                </mdb-carousel>
+                            </div>
+                            </div>
+                            </div>
+
+                      
+
+                                <div class="col-md-12">
+                                    <div class="card border-0">
+                      
+                                          <div class="card-body">
+                                            <h6 class="card-category" style="color: orange;">
+                                                <i class="material-icons">face</i> Colleague of the Month 2020
+                                              </h6>
+                                              <hr>
+        <mdb-carousel [isControls]="false" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+                  [animation]="'slide'">
+      <mdb-carousel-item *ngFor="let item of slides; let i = index">
+        <div class="row">
+          <div class="col-md-3" [ngClass]="{'d-none d-md-block': cardIndex !== 0}"
+               *ngFor="let card of item; let cardIndex = index">
+            <mdb-card class="my-1">
+              <mdb-card-img [src]="card.img" alt="Employee Photo"></mdb-card-img>
+              <mdb-card-body>
+                <mdb-card-title>
+                  <h6 style="text-align: center;">{{card.title}}</h6>
+                </mdb-card-title>
+                <p style="text-align: center;">{{card.description}}</p>
+                <button style="margin-left: 40%;" (click)="openRationaleDialog(card)"   data-toggle="tooltip" data-placement="top" title="View Rationale" mat-icon-button color="primary">
+                    <mat-icon>launch</mat-icon>
+                    </button>
+              </mdb-card-body>
+            </mdb-card>
+          </div>
+        </div>
+      </mdb-carousel-item>
+    </mdb-carousel>
+    </div>
+    </div>
+                                </div>
+
+    <div class="col-md-12">
+        <div class="card border-0">
+
+              <div class="card-body">
+                <h6 class="card-category" style="color: orange;">
+                    <i class="material-icons">face</i> Colleague of the Month 2019
+                  </h6>
+                  <hr>
+                  <mdb-carousel [isControls]="false" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+                  [animation]="'slide'">
+      <mdb-carousel-item *ngFor="let item of aslide; let i = index">
+        <div class="row">
+          <div class="col-md-3" [ngClass]="{'d-none d-md-block': cardIndex !== 0}"
+               *ngFor="let card of item; let cardIndex = index">
+            <mdb-card class="my-1">
+              <mdb-card-img [src]="card.img" alt="Employee Photo"></mdb-card-img>
+              <mdb-card-body>
+                <mdb-card-title>
+                  <h6 style="text-align: center;">{{card.title}}</h6>
+                </mdb-card-title>
+                <p style="text-align: center;">{{card.description}}</p>
+                <button style="margin-left: 40%;" (click)="openRationaleDialog(card)"   data-toggle="tooltip" data-placement="top" title="View Rationale" mat-icon-button color="primary">
+                    <mat-icon>launch</mat-icon>
+                    </button>
+              </mdb-card-body>
+            </mdb-card>
+          </div>
+        </div>
+      </mdb-carousel-item>
+    </mdb-carousel>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>                     
+</div>
+
+<div id="container" style="display:flex;justify-content: center;"></div>
+
+</div>
+       
+
+</div>
+<!-- ------------------------------------------------------------------------------- -->
+<ng-template #callAPIDialog>
+<form [formGroup]="form">
+
+  
+    <div class="border-0">
+
+          <div class="card-body">
+            <h6 class="card-category" style="font-family:Calibri (Body); font-weight: 100; color: orange;">
+              Rationale for {{this.fullName}}
+                <!-- <mat-icon class="close" (click)="activeModal.dismiss('Cross click')" title="Close">close</mat-icon> -->
+
+              </h6>
+              <hr>
+              <mat-form-field>
+                <textarea rows="10" style="text-align: justify;
+                white-space: normal;" formControlName="rationale" matInput [readonly]="true"></textarea>
+            </mat-form-field>
+           
+
+</div>
+</div>
+  
+</form>
+</ng-template>
+
+

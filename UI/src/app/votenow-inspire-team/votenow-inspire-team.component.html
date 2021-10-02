@@ -1,0 +1,91 @@
+<div class="main-content" style="font-family: nimbus-sans;">
+    <div class="container-fluid">
+        <div class="row">       
+            <div class="col-md-12">
+                <div class="card">   
+                    <div class="card-body">
+                        <h6 class="card-category text-danger" style="float: left;">
+                            <i class="material-icons">stacked_line_chart</i> Vote Shortlisted Inspire Team {{ nominationPeriod | date:"MMMM yyyy"}} 
+                        </h6>
+  
+                        <!-- Search -->
+                        <mat-form-field class="search-form-field" floatLabel="never">
+                            <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()" >
+                            <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+                            <mat-icon>close</mat-icon>
+                            </button>
+                        </mat-form-field>
+  
+                        <div class="table-responsive">   
+        
+                            <div class="mat-elevation-z8">
+                                <table mat-table [hidden]="!isTableHasData" [dataSource]="dataSource" matSort #TableVoteLogSort="matSort">
+                
+                                <!-- Team Name Column -->
+                                <ng-container matColumnDef="TeamName">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Team Name </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.TeamName}}</td>
+                                </ng-container>
+                
+                                <!-- View Rationale -->
+                                <ng-container matColumnDef="Rationales">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="rationale"> Rationales </th>
+                                    <td mat-cell *matCellDef="let element">
+                                    <button mat-icon-button style=" color: #870B58;" (click)="onClickViewRationale(element)">
+                                        <mat-icon aria-label="launchicon">launch</mat-icon>
+                                    </button>
+                                    </td>
+                                </ng-container>
+                
+                                <!-- Checkbox Column -->
+                                <ng-container matColumnDef="select">
+                                    <th mat-header-cell *matHeaderCellDef >
+                                    <mat-checkbox aria-label="Select All" [checked]="isChecked()" [indeterminate]="isIndeterminate()" (change)="$event ? toggleAll($event) : null">
+                                        Select All
+                                    </mat-checkbox>
+                                    </th>
+                                    
+                                    <td mat-cell *matCellDef="let element"> 
+                                    <mat-checkbox  (change)="$event ? toggle(element, $event) : null" [checked]="element.voted">                
+                                    </mat-checkbox>
+                                    
+                                    </td>
+                                </ng-container>
+                
+                                <!-- loading -->
+                                <ng-container matColumnDef="loading">
+                                    <mat-footer-cell *matFooterCellDef class="styling" colspan="4">
+                                    Loading data...
+                                    </mat-footer-cell>
+                                </ng-container> 
+                
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" >
+                                </tr>
+                
+                                <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSource!=null}" class="styling"></mat-footer-row>
+                
+                                </table>
+                
+                                <div [hidden]="isTableHasData" class="stylingRecords">
+                                <b>No records found!</b>
+                                </div>
+                            
+                                <mat-paginator #TableVoteLogPaginator="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                            
+                            </div>
+                        </div>
+  
+                        <div style="justify-content: flex-end;">
+                            <button mat-raised-button class="btn btn-danger" (click)="call()" style="background-color: rgb(233, 78, 15);text-transform: capitalize;font-size:100%;float:right;">Vote</button>
+                        </div>
+  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  
+   

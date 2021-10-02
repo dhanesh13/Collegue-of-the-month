@@ -1,0 +1,214 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+  
+                      <h6 class="card-category text-danger" style="float: left;">
+                        <i class="material-icons" style="font-size: xx-large;">how_to_reg</i> Inspire Team {{ nominationPeriod | date:"MMMM yyyy"}}
+                      </h6>
+  
+                      <br/><br/>
+  
+                        <span class="lblRequired">*</span> Required
+                        <mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">  
+  
+                          <!--First Step starts-->
+                          
+                          <mat-step [stepControl]="firstFormGroup" state="arrow">
+                            <form [formGroup]="firstFormGroup" (ngSubmit)="form1()" #formone="ngForm">
+                              <ng-template matStepLabel><b>Nomination Details</b></ng-template>
+                              <br>                       
+                              <div class="row">
+                                <div class="col-md-12">
+                                <mat-form-field appearance="fill">
+                                  <mat-label>Team Name</mat-label>
+                                  <input type="text" matInput formControlName="teamName" required style="width:100%;">
+                                  <mat-error *ngIf="teamName.invalid">{{getErrorMessage()}}</mat-error>
+                                </mat-form-field>
+                                <br> 
+                                </div>
+                              </div>
+  
+                              <br/>
+  
+                              <div class="flex-parent jc-center">
+                                <div class="col-md-3">
+                                  <button mat-raised-button class="btn btn-block" style="background-color: rgb(170, 174, 184)" (click)="stepper.reset()">Cancel</button> &nbsp;&nbsp;
+                                </div>
+                                <div class="col-md-3">
+                                  <button mat-raised-button id="Next1_btn" matStepperNext class="btn btn-danger btn-block" style="background-color: rgb(233, 78, 15)">Next</button></div>
+                              </div>
+  
+                            </form>
+                          </mat-step>
+                        
+                          
+                        <!--First Step ends-->
+                         
+                        <!--Second Step starts-->
+                        <mat-step state="arrow"  [completed]="!disableButtonNext2Button && secondFormGroup.valid">
+                            <form [formGroup]="secondFormGroup" (ngSubmit)="form2()" #formtwo="ngForm">
+                              <ng-template matStepLabel><b>Impact</b></ng-template>
+                              <label style="color:rgb(0, 0, 0)">What significant impact has the team made on SD Worx? <span class="lblError">*</span></label><br><br>  
+  
+                              <div formArrayName="secondFormArray" *ngFor="let item of getSecondFormControl(); let i = index;">
+                                <div [formGroupName]="i">
+
+                                  <mat-checkbox [checked]="item.get('checked').value" (change)="onChange($event, i)">
+                                      <label style="color: rgb(0, 0, 0)">{{item.get('name').value}}</label> 
+                                  </mat-checkbox>
+  
+                                  <br/><br/>
+                                  
+                                  <div class="form-group purple-border-focus" [hidden]="!item.get('checked').value" >
+                                    <textarea class="form-control" type="text" rows="3" formControlName="reason" [placeholder]="item.get('placeholder').value"></textarea>                              
+                                  </div> 
+                                  
+                                  <div *ngIf="getSecondFormError(i)">
+                                    <span class="text-danger">
+                                      {{errorMessage}}
+                                    </span>
+                                    <br/> <br/>
+                                  </div>                         
+  
+                                </div>
+                              </div>
+  
+                              <div>
+                                <button mat-button matStepperPrevious style="background-color:rgb(233, 78, 15); color: rgb(255, 255, 255)">Back</button>
+                              </div> 
+  
+  
+                              <div class="flex-parent jc-center">
+                                <div class="col-md-3">
+                                  <button mat-raised-button class="btn btn-block" style="background-color: rgb(170, 174, 184)" (click)="stepper.reset()">Cancel</button> &nbsp;&nbsp;
+                                </div>
+                                <div class="col-md-3">
+                                  <button mat-raised-button matStepperNext id="Next2_btn" class="btn btn-danger btn-block" style="background-color: rgb(233, 78, 15)" [disabled]="disableButtonNext2Button || !secondFormGroup.valid">Next</button>
+                                </div>
+                              </div>
+  
+                            </form>
+                        </mat-step>   
+                        <!--Second Step ends-->             
+                        
+                        <!--Third Step starts-->
+                        <mat-step state="arrow" [completed]="!disableButtonNext3Button && thirdFormGroup.valid">
+                            <form [formGroup]="thirdFormGroup" (ngSubmit)="form3()" #formthree="ngForm">
+                            <ng-template matStepLabel><b>Be a Spark</b></ng-template>
+                            
+                            <div formArrayName="thirdFormArray"  *ngFor="let item of getThirdFormControl(); let i = index;">
+                                <div [formGroupName]="i">
+                                <mat-checkbox [checked]="item.get('checked').value" (change)="onChangeSpark($event, i)" [matTooltip]="item.get('description').value" matTooltipClass="Hover" matTooltipPosition="right">
+                                    <label style="color: rgb(0, 0, 0)">{{item.get('name').value}}</label>                                
+                                </mat-checkbox>
+                                <br/><br/>
+  
+                                <div class="form-group purple-border-focus" [hidden]="!item.get('checked').value" >
+                                    <textarea class="form-control" type="text" rows="3" formControlName="reason" [placeholder]="item.get('placeholder').value"></textarea>
+                                </div> 
+
+                                <div *ngIf="getThirdFormError(i)">
+                                    <span class="text-danger">
+                                      {{errorMessage}}
+                                    </span>
+                                    <br/> <br/>
+                                </div> 
+
+                                </div>
+                            </div>
+                             
+                              
+                            <div>
+                                <button mat-button matStepperPrevious style="background-color:rgb(233, 78, 15); color: rgb(255, 255, 255)">Back</button>
+                            </div> 
+  
+                            <div class="flex-parent jc-center">
+                                <div class="col-md-3">
+                                    <button mat-raised-button class="btn btn-block" style="background-color: rgb(170, 174, 184)" (click)="stepper.reset()">Cancel</button> &nbsp;&nbsp;
+                                </div>
+                            <div class="col-md-3">
+                                <button mat-raised-button id="Next3_btn" matStepperNext class="btn btn-danger btn-block" style="background-color: rgb(233, 78, 15)"  [disabled]="disableButtonNext3Button || !thirdFormGroup.valid">Next</button></div>
+                            </div>
+  
+                            </form>
+                        </mat-step>  
+                        <!--Third Step ends-->                  
+
+                        <!--Forth Step starts-->
+  
+                        <mat-step state="arrow" [stepControl]="fourthFormGroup">
+                            <ng-template  matStepLabel><b>Review & Submit</b></ng-template>
+  
+                                <div>
+                                  <label style="color:rgb(135, 11, 88)" class="h5" text-align="center">Nomination Details</label>
+                                  <p style="color:rgb(0, 0, 0)" class="h6">Team Name</p>                       
+                                    <mat-form-field appearance="fill">
+                                      <input type="text" matInput value="{{teamNameFourthStepper}}" readonly>
+                                    </mat-form-field>
+                                </div>
+  
+                                <div>
+                                  <label style="color:rgb(135, 11, 88)" class="h5" text-align="center">Impact</label>
+                                  <div *ngFor="let item of getSecondFormControl(); let i = index;">
+                                      <p style="color:rgb(0, 0, 0)" *ngIf="item.get('checked').value" class="h5">
+                                        {{item.get('name').value}} 
+                                      </p> 
+                                      <div *ngIf="!item.get('reason').value == 0">
+                                        <mat-form-field appearance="fill">
+                                          <input type="text" matInput value="{{item.get('reason').value}}" readonly>
+                                        </mat-form-field>
+                                      </div>
+                                  </div>
+                                </div>
+                                 
+                                <div>
+                                <label style="color:rgb(135, 11, 88)" class="h5" text-align="center">Be a Spark</label>
+                                <div *ngFor="let item of getThirdFormControl(); let i = index;">
+                                  
+                                    <p style="color:rgb(0, 0, 0)" *ngIf="item.get('checked').value" class="h5">
+                                      {{item.get('name').value}} 
+                                    </p> 
+                                  <div *ngIf="!item.get('reason').value == 0">
+                                    <mat-form-field appearance="fill">
+                                      <input type="text" matInput value="{{item.get('reason').value}}" readonly>
+                                    </mat-form-field>
+                                  </div>
+                                </div>
+                            </div>
+                            
+                            <br/>
+                            <div>
+                              <button mat-button matStepperPrevious style="background-color:rgb(233, 78, 15); color: rgb(255, 255, 255)">Back</button>
+                            </div>
+  
+                            <div class="flex-parent jc-center">
+                              <div class="col-md-3">
+                                <button mat-raised-button class="btn btn-block" style="background-color: rgb(170, 174, 184)" (click)="stepper.reset()">Cancel</button> &nbsp;&nbsp;
+                              </div>
+                              <div class="col-md-3">
+                                <button mat-raised-button type="submit" class="btn btn-danger btn-block" style="background-color: rgb(233, 78, 15)" (click)="callService()">Submit</button>
+                              </div>
+                            </div>
+                          
+                        </mat-step> 
+  
+                        <ng-template matStepperIcon="arrow">
+                            <span>
+                                <i class="material-icons">arrow_right</i>
+                            </span>
+                        </ng-template>
+  
+                        </mat-horizontal-stepper> 
+  
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  

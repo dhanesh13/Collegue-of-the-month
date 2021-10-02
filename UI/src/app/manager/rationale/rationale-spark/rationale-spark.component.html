@@ -1,0 +1,31 @@
+<div class="modal-body"> 
+      
+    <mat-icon class="closeIcon" (click)="activeModal.dismiss('Cross click')" title="Close">close</mat-icon>
+  
+    <ul ngbNav #nav="ngbNav" class="nav-tabs" >
+        <li [ngbNavItem]="1">
+            <a ngbNavLink style="background-color: #870B58;text-align:center;text-transform: capitalize;width:468%;margin-top: 42%;font-size:95%;"> Be a Spark </a>
+            <ng-template ngbNavContent>
+                <div *ngFor="let d of receivedData$">  
+                    <p>{{d.BeASpark}} </p>
+                </div> 
+            </ng-template>
+        </li>    
+    </ul>
+      
+    <div [ngbNavOutlet]="nav"></div>
+</div>
+  
+  
+     
+  
+   
+        
+  
+       
+  
+   
+        
+  
+       
+

@@ -1,0 +1,71 @@
+.currentVotingForm {
+    margin-top:1%;
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .currentVotingForm-full-width {
+    width: 100%;
+  }
+
+  .mat-tab-label .mat-tab-label-content {
+    font-weight: bold !important;
+}
+
+table {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+.delete-button-container{
+  margin-left:25%;
+}
+
+.mat-tooltip {
+  background-color:#D3D3D3;
+  color:black;
+  font-size:small;
+}
+
+.mat-sort-header{
+  font-size: 15px;
+  color: #870B58;
+  font-weight: bolder;
+}
+
+
+.voting-session-button {
+  display: table-cell;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.voting-session-clearButton{
+  background-color: #7783A0 !important;
+  color: white;
+  width: 100%;
+  margin-right: 3% !important;
+}
+
+.voting-session-confirmButton{
+  background-color: rgb(233, 78, 15);
+  color: white;
+  width: 100%;
+  margin-left: 3% !important;
+}
+
+.editIcon{
+  color: #303642;
+}
+
+.closeIcon{
+  color: #E94E0F;
+}

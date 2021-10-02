@@ -1,0 +1,27 @@
+a:link {
+  color: #870B58;
+}
+
+.closeIcon{
+  cursor: pointer;
+  margin-left: 440px;
+  color:black;
+}
+
+/* li:last-child { float:right; } */
+
+
+.impact{
+  width: 29%;
+  margin-right:20%;
+}
+
+.spark{
+  width: 29%;
+  margin-right:20%;
+}
+
+.rationale{
+  width: 28%;
+  margin-right:5%;
+}
